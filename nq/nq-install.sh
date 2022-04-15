@@ -130,7 +130,7 @@ fi
 mkdir -p /etc/nodequery
 
 # Download agent
-echo -e "|   Downloading nq-agent.sh to /etc/nodequery\n|\n|   + $(wget -nv -o /dev/stdout -O /etc/nodequery/nq-agent.sh --no-check-certificate https://s.web01.ml/nq/nq-agent.sh)"
+echo -e "|   Downloading nq-agent.sh to /etc/nodequery\n|\n|   + $(wget -nv -o /dev/stdout -O /etc/nodequery/nq-agent.sh --no-check-certificate https://raw.githubusercontent.com/a224327780/nq-agent/master/nq-agent.sh)"
 
 if [ -f /etc/nodequery/nq-agent.sh ]
 then
