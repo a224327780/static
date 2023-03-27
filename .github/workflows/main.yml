@@ -15,4 +15,4 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           preCommands:  npm install && npm run build && wrangler pages project create static  --production-branch ${GITHUB_REF_NAME} || true
-          command: pages publish dist --project-name=static
+          command: pages publish . --project-name=static
