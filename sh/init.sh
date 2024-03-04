@@ -8,7 +8,7 @@ snap install oracle-cloud-agent --classic
 
 dpkg-reconfigure --frontend=noninteractive locales
 sed -i -e 's/# zh_CN.UTF-8 UTF-8/zh_CN.UTF-8 UTF-8/' /etc/locale.gen
-update-locale LANG=zh_CN.UTF-8 LANGUAGE=zh_CN.UTF-8 LC_ALL=zh_CN.UTF-8
+update-locale LANG=zh_CN.UTF-8 LANGUAGE=zh_CN.UTF-8
 
 echo 'alias ll="ls -la"' >> ~/.bashrc 
 echo 'alias vi="vim"' >> ~/.bashrc 
