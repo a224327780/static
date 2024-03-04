@@ -6,6 +6,20 @@ curl https://rclone.org/install.sh | bash
 curl -fsSL https://get.docker.com | sh
 snap install oracle-cloud-agent --classic 
 
+mkdir -p /data/shadowsocks-libev 
+cat >/data/shadowsocks-libev/config.json<<EOF
+{
+    "server":"0.0.0.0",
+    "server_port":9010,
+    "password":"bVN2j2n3F2C3",
+    "timeout":120,
+    "method":"aes-256-gcm",
+    "fast_open":true,
+    "nameserver":"1.1.1.1",
+    "mode":"tcp_and_udp"
+}
+EOF
+
 dpkg-reconfigure --frontend=noninteractive locales
 sed -i -e 's/# zh_CN.UTF-8 UTF-8/zh_CN.UTF-8 UTF-8/' /etc/locale.gen
 update-locale LANG=zh_CN.UTF-8 LANGUAGE=zh_CN.UTF-8
@@ -35,6 +49,9 @@ source ~/.bashrc
 
 rm -rf /etc/localtime
 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+
+docker network create brg-net
+docker run -d -p 9010:9010 -p 9010:9010/udp --name ss --network brg-net --network-alias ss --restart=always -v /data/shadowsocks-libev:/etc/shadowsocks-libev teddysun/shadowsocks-libev
 
 ntpdate ntp.ubuntu.com
 
