@@ -53,6 +53,8 @@ ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 docker network create brg-net
 docker run -d -p 9010:9010 -p 9010:9010/udp --name ss --network brg-net --network-alias ss --restart=always -v /data/shadowsocks-libev:/etc/shadowsocks-libev teddysun/shadowsocks-libev
 
+cat <(crontab -l) <(echo "0 18,20,22 * * * root timeout 300 docker run --rm ghcr.io/a224327780/lookbusy lookbusy -c 10-30 -r curve -p 300 >/dev/null &") | crontab -
+
 ntpdate ntp.ubuntu.com
 
 apt clean
