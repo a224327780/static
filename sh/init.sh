@@ -24,6 +24,14 @@ dpkg-reconfigure --frontend=noninteractive locales
 sed -i -e 's/# zh_CN.UTF-8 UTF-8/zh_CN.UTF-8 UTF-8/' /etc/locale.gen
 update-locale LANG=zh_CN.UTF-8 LANGUAGE=zh_CN.UTF-8
 
+cat >~/.vimrc<<EOF
+syntax on
+set encoding=utf-8
+set smartindent
+set wrap
+set ruler
+EOF
+
 echo 'alias ll="ls -la"' >> ~/.bashrc 
 echo 'alias vi="vim"' >> ~/.bashrc 
 echo 'export LANG=zh_CN.UTF-8' >> ~/.bashrc 
