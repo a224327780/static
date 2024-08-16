@@ -58,6 +58,16 @@ source ~/.bashrc
 rm -rf /etc/localtime
 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
+cat >/etc/docker/daemon.json<<EOF
+{
+  "log-driver": "json-file",
+  "log-opts": {
+    "max-size": "10m",
+    "max-file": "3"
+  }
+}
+EOF
+
 docker network create brg-net
 docker run -d -p 9010:9010 -p 9010:9010/udp --name ss --network brg-net --network-alias ss --restart=always -v /data/shadowsocks-libev:/etc/shadowsocks-libev teddysun/shadowsocks-libev
 
